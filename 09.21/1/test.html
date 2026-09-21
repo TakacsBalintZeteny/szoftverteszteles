@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html lang="hu">
+    
+<head>
+    <meta charset="UTF-8">
+    <title>QUnit példa</title>
+
+    <link rel="stylesheet" href="qunit-2.26.0.css">
+</head>
+
+<body>
+
+<div id="qunit"></div>
+
+<div id="qunit-fixture"></div>
+
+<script src="qunit-2.26.0.js"></script>
+
+<script>
+    function oszthato(n, m) {
+        return n % m === 0;
+    }
+
+    function vanbenne(n, m) {
+        return n.toString().includes(m);
+    }
+
+    /*function fizzbuzz(n) {
+        if (oszthato(n, 3) && oszthato(n, 5) || vanbenne(n, 3) && vanbenne(n, 5)) {
+            return "fizzbuzz";
+        } else if (oszthato(n, 3) && vanbenne(n, 5) || oszthato(n, 5) && vanbenne(n, 3)) {
+            return "fizzbuzz";
+        } else if (oszthato(n, 3) || vanbenne(n, 3)) {
+            return "fizz";
+        } else if (oszthato(n, 5) || vanbenne(n, 5)) {
+            return "buzz";
+        } else {
+            return n;
+        }
+    }*/ //refaktorálás, egy return, string összefűzés
+
+    function fizzbuzz(n) {
+        var result = "";
+        if (oszthato(n, 3) || vanbenne(n, 3)) {
+            result += "fizz";
+        }
+        if (oszthato(n, 5) || vanbenne(n, 5)) {
+            result += "buzz";
+        }
+        return result || n;
+    }
+
+    // Tesztelendő függvény
+    function square(x) {
+        return x * x;
+    }
+
+    // QUnit tesztek
+    QUnit.module("square függvény tesztelése");
+
+    QUnit.test("Az input 0", function(assert) {
+        assert.equal(fizzbuzz(0), "fizzbuzz");
+    });
+    QUnit.test("Az input 1", function(assert) {
+        assert.equal(fizzbuzz(1), 1);
+    });
+    QUnit.test("Az input 2", function(assert) {
+        assert.equal(fizzbuzz(2), 2);
+    });
+    QUnit.test("Az input 3", function(assert) {
+        assert.equal(fizzbuzz(3), "fizz");
+    });
+    QUnit.test("Az input 5", function(assert) {
+        assert.equal(fizzbuzz(5), "buzz");
+    });
+    QUnit.test("Az input 6", function(assert) {
+        assert.equal(fizzbuzz(6), "fizz");
+    });
+    QUnit.test("Az input 15", function(assert) {
+        assert.equal(fizzbuzz(15), "fizzbuzz");
+    });
+    QUnit.test("Az input 32", function(assert) {
+        assert.equal(fizzbuzz(32), "fizz");
+    });
+    QUnit.test("Az input 35", function(assert) {
+        assert.equal(fizzbuzz(35), "fizzbuzz");
+    });
+     QUnit.test("Az input 51", function(assert) {
+        assert.equal(fizzbuzz(51), "fizzbuzz");
+    });
+    QUnit.test("Az input 52", function(assert) {
+        assert.equal(fizzbuzz(52), "buzz");
+    });
+    QUnit.test("Az input 53", function(assert) {
+        assert.equal(fizzbuzz(53), "fizzbuzz");
+    });
+    QUnit.test("Az input 523", function(assert) {
+        assert.equal(fizzbuzz(523), "fizzbuzz");
+    });
+</script>
+
+</body>
+
+</html>

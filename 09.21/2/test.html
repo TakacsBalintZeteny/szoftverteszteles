@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html lang="hu">
+    
+<head>
+    <meta charset="UTF-8">
+    <title>QUnit példa 2</title>
+
+    <link rel="stylesheet" href="qunit-2.26.0.css">
+</head>
+
+<body>
+
+<div id="qunit"></div>
+
+<div id="qunit-fixture"></div>
+
+<script src="qunit-2.26.0.js"></script>
+
+
+<script>
+//Római szám váltó 2000-ig.
+    function szamvalto(n) {
+        const values = [
+            [1000, "M"], [900, "CM"], [500, "D"], [400, "CD"],
+            [100, "C"], [90, "XC"], [50, "L"], [40, "XL"],
+            [10, "X"], [9, "IX"], [5, "V"], [4, "IV"], [1, "I"]
+        ];
+
+        let result = "";
+
+        for (const [value, symbol] of values) {
+            while (n >= value) {
+                result += symbol;
+                n -= value;
+            }
+        }
+
+  return result;
+}
+
+    QUnit.test("Az input 1", function(assert) {
+        assert.equal(szamvalto(1), "I");
+    });
+    QUnit.test("Az input 2", function(assert) {
+        assert.equal(szamvalto(2), "II");
+    });
+    QUnit.test("Az input 3", function(assert) {
+        assert.equal(szamvalto(3), "III");
+    });
+    QUnit.test("Az input 4", function(assert) {
+        assert.equal(szamvalto(4), "IV");
+    });
+    QUnit.test("Az input 5", function(assert) {
+        assert.equal(szamvalto(5), "V");
+    });
+    QUnit.test("Az input 6", function(assert) {
+        assert.equal(szamvalto(6), "VI");
+    });
+    QUnit.test("Az input 7", function(assert) {
+        assert.equal(szamvalto(7), "VII");
+    });
+    QUnit.test("Az input 8", function(assert) {
+        assert.equal(szamvalto(8), "VIII");
+    });
+    QUnit.test("Az input 9", function(assert) {
+        assert.equal(szamvalto(9), "IX");
+    });
+    QUnit.test("Az input 10", function(assert) {
+        assert.equal(szamvalto(10), "X");
+    });
+    QUnit.test("Az input 40", function(assert) {
+        assert.equal(szamvalto(40), "XL");
+    });
+    QUnit.test("Az input 50", function(assert) {
+        assert.equal(szamvalto(50), "L");
+    });
+    QUnit.test("Az input 90", function(assert) {
+        assert.equal(szamvalto(90), "XC");
+    });
+    QUnit.test("Az input 100", function(assert) {
+        assert.equal(szamvalto(100), "C");
+    });
+    QUnit.test("Az input 400", function(assert) {
+        assert.equal(szamvalto(400), "CD");
+    });
+    QUnit.test("Az input 500", function(assert) {
+        assert.equal(szamvalto(500), "D");
+    });
+    QUnit.test("Az input 900", function(assert) {
+        assert.equal(szamvalto(900), "CM");
+    });
+    QUnit.test("Az input 1000", function(assert) {
+        assert.equal(szamvalto(1000), "M");
+    });
+    QUnit.test("Az input 2000", function(assert) {
+        assert.equal(szamvalto(2000), "MM");
+    });
+    
+</script>
+
+</body>
+
+</html>
