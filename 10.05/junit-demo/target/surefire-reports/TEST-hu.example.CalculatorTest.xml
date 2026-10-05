@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="hu.example.CalculatorTest" time="0.065" tests="8" errors="0" skipped="0" failures="0">
+  <properties/>
+  <testcase name="sub2TwoNumbers" classname="hu.example.CalculatorTest" time="0.018"/>
+  <testcase name="addTwoNumbers" classname="hu.example.CalculatorTest" time="0.001"/>
+  <testcase name="divisionByZeroThrowsException" classname="hu.example.CalculatorTest" time="0.002"/>
+  <testcase name="mult2TwoNumbers" classname="hu.example.CalculatorTest" time="0.002"/>
+  <testcase name="div2TwoNumbers" classname="hu.example.CalculatorTest" time="0"/>
+  <testcase name="sub1TwoNumbers" classname="hu.example.CalculatorTest" time="0.001"/>
+  <testcase name="mult1TwoNumbers" classname="hu.example.CalculatorTest" time="0"/>
+  <testcase name="div1TwoNumbers" classname="hu.example.CalculatorTest" time="0.001"/>
+</testsuite>

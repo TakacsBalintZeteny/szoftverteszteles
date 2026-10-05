@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="hu.example.TableTest" time="0.07" tests="8" errors="0" skipped="0" failures="0">
+  <properties/>
+  <testcase name="testSetHeightWhenNotAdjustable" classname="hu.example.TableTest" time="0.017"/>
+  <testcase name="testSetHeightInvalidAboveMax" classname="hu.example.TableTest" time="0.001"/>
+  <testcase name="testSetHeightInvalidBelowMin" classname="hu.example.TableTest" time="0"/>
+  <testcase name="testCapacityCalculation" classname="hu.example.TableTest" time="0.001"/>
+  <testcase name="testSetHeightBoundaryMax" classname="hu.example.TableTest" time="0"/>
+  <testcase name="testSetHeightBoundaryMin" classname="hu.example.TableTest" time="0"/>
+  <testcase name="testAreaCalculation" classname="hu.example.TableTest" time="0.001"/>
+  <testcase name="testSetHeightValid" classname="hu.example.TableTest" time="0"/>
+</testsuite>
