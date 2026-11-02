@@ -1,0 +1,54 @@
+1.  5000Ft, 3kg,  HU, False --->  1500Ft
+2.  5000Ft, 5kg,  HU, False --->  2500Ft
+3.  5000Ft, 10kg, HU, False --->  2500Ft
+4.  5000Ft, 20kg, HU, False --->  2500Ft
+5.  5000Ft, 25kg, HU, False --->  5000Ft
+6. -5000Ft, -3kg, HU, False --->    HIBA
+7.  5000Ft, 3kg,  HU, True  --->  2250Ft
+8.  5000Ft, 3kg,  DE, False --->  1500Ft
+9. 25000Ft, 3kg,  HU, False --->     0Ft
+10.20000Ft, 3kg,  HU, False --->  1500Ft
+11.5000Ft,  3kg,  hu, False --->  1500Ft
+12.5000Ft,  3kg,  Hu, False --->  1500Ft
+13.5000Ft,  3kg,  hU, False --->  1500Ft
+14.5000Ft,  3kg,  abc, False -->    HIBA
+15.100000Ft, 100kg, HU, True -->     0Ft
+16.25000Ft, 3kg,  DE, False --->  3000Ft
+17.20000Ft, 3kg,  DE, False --->  1500Ft
+18.25000Ft, 3kg,  DE, True  --->  5000Ft
+19.20000Ft, 3kg,  DE, True  --->  2250Ft
+
+
+function calculateShippingCost(orderValue, weight, country, express) {
+    let shippingCost = 0;
+
+    // Free shipping in Hungary for orders above 20,000 HUF
+    if (country === "HU" && orderValue >= 20000) {
+        return 0;
+    }
+
+    // Base shipping cost by weight
+    if (weight < 5) {
+        shippingCost = 1500;
+    } else if (weight > 5 && weight < 20) {       //HIBA: weight > 5 && weight < 20, JÓ: weight >= 5 && weight <= 20
+        shippingCost = 2500;
+    } else {
+        shippingCost = 5000;
+    }
+
+    // International shipping
+    if (country !== "HU") {
+        shippingCost = shippingCost * 2;
+    }
+
+    // Express delivery surcharge
+    if (express === true) {
+        shippingCost = shippingCost + 50;      //HIBA: shippingCost + 50, JÓ: shippingCost * 0.5
+    }
+
+    return shippingCost;
+}
+
+HIBA: az országkódot nem ellenőrzi, hogy 2 betűből áll és azt se a kicsi nagy betűket se
+HIBA: a negatív értékeket nem ellenőrzi
+HIBA: // International és // Express delivery surcharge talán rossz a sorrendjük

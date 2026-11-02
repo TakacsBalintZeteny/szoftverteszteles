@@ -1,0 +1,55 @@
+
+function calculateShippingCost(orderValue, weight, country, express) {
+    // Bemeneti adatok ellenőrzése
+    if (typeof orderValue !== "number" ||
+        !Number.isFinite(orderValue) ||
+        orderValue < 0) {
+        throw new Error("Érvénytelen rendelési érték!");
+    }
+
+    if (typeof weight !== "number" ||
+        !Number.isFinite(weight) ||
+        weight < 0) {
+        throw new Error("Érvénytelen tömeg!");
+    }
+
+    if (typeof country !== "string" ||
+        !/^[a-zA-Z]{2}$/.test(country)) {
+        throw new Error("Az országkódnak két betűből kell állnia!");
+    }
+
+    if (typeof express !== "boolean") {
+        throw new Error("Az express paraméternek logikai értéknek kell lennie!");
+    }
+
+    // Országkód egységesítése
+    country = country.toUpperCase();
+
+    // Magyarországon 20 000 Ft feletti rendelés ingyenes
+    if (country === "HU" && orderValue > 20000) {
+        return 0;
+    }
+
+    // Alap szállítási díj tömeg alapján
+    let shippingCost;
+
+    if (weight < 5) {
+        shippingCost = 1500;
+    } else if (weight <= 20) {
+        shippingCost = 2500;
+    } else {
+        shippingCost = 5000;
+    }
+
+    // Külföldi szállítás: kétszeres díj
+    if (country !== "HU") {
+        shippingCost *= 2;
+    }
+
+    // Expressz szállítás: 50%-os felár
+    if (express === true) {
+        shippingCost *= 1.5;
+    }
+
+    return shippingCost;
+}
